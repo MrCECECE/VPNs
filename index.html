@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сравнение VPN сервисов - Результаты тестирования</title>
+    <meta name="description" content="Сравнение скорости VPN сервисов: скачивание и загрузка данных">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>🚀 VPN Speed Test</h1>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="search" 
+                    placeholder="🔍 Поиск по названию сервиса..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="sort-container">
+                <span class="sort-label">Сортировать по:</span>
+                <div class="sort-buttons">
+                    <button data-sort="download" class="sort-btn sortable">
+                        <span class="th-content">
+                            Скачивание
+                            <span class="sort-icon">↕</span>
+                        </span>
+                    </button>
+                    <button data-sort="upload" class="sort-btn sortable">
+                        <span class="th-content">
+                            Загрузка
+                            <span class="sort-icon">↕</span>
+                        </span>
+                    </button>
+                    <button id="show-all-btn" class="sort-btn">
+                        <span class="th-content">
+                            Показать все
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="cards-container" id="cards-container">
+                <!-- Карточки загрузятся через JavaScript -->
+            </div>
+
+            <div class="legend">
+                <h3>📊 Легенда скорости</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="speed-dot high"></span>
+                        <span>Быстро (>50 Mbps)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="speed-dot medium"></span>
+                        <span>Средне (10-50 Mbps)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="speed-dot low"></span>
+                        <span>Медленно (<10 Mbps)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
