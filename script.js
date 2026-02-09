@@ -7,7 +7,7 @@ const vpnData = [
         name: 'AdGuard',
         icon: 'assets/AdGuard/icon.webp',
         link: 'https://play.google.com/store/apps/details?id=com.adguard.vpn&pcampaignid=web_share',
-        detailLink: 'assets/AdGuard/adguard.html',
+        detailLink: 'detail.html?vpn=adguard',
         download: 19.4,
         upload: 31.1
     },
@@ -16,7 +16,7 @@ const vpnData = [
         name: 'Turbo VPN',
         icon: 'assets/Turbo VPN/icon.webp',
         link: 'https://play.google.com/store/apps/details?id=free.vpn.unblock.proxy.turbovpn&pcampaignid=web_share',
-        detailLink: 'assets/Turbo VPN/turbo-vpn.html',
+        detailLink: 'detail.html?vpn=turbo-vpn',
         download: 2.81,
         upload: 2.79
     },
@@ -25,7 +25,7 @@ const vpnData = [
         name: 'Octohide VPN',
         icon: 'assets/Octohide VPN/icon.webp',
         link: 'https://play.google.com/store/apps/details?id=octohide.vpn&pcampaignid=web_share',
-        detailLink: 'assets/Octohide VPN/octohide-vpn.html',
+        detailLink: 'detail.html?vpn=octohide-vpn',
         download: 4.94,
         upload: 6.98
     },
@@ -34,7 +34,7 @@ const vpnData = [
         name: 'VPN Proxy Master',
         icon: 'assets/VPN Proxy Master/icon.webp',
         link: 'https://play.google.com/store/apps/details?id=free.vpn.unblock.proxy.vpn.master.pro&pcampaignid=web_share',
-        detailLink: 'assets/VPN Proxy Master/vpn-proxy-master.html',
+        detailLink: 'detail.html?vpn=vpn-proxy-master',
         download: 2.83,
         upload: 62.0
     },
@@ -43,7 +43,7 @@ const vpnData = [
         name: 'JumpJump VPN',
         icon: 'assets/JumpJump VPN/icon.webp',
         link: 'https://play.google.com/store/apps/details?id=app.jumpjumpvpn.jumpjumpvpn&pcampaignid=web_share',
-        detailLink: 'assets/JumpJump VPN/jumpjump-vpn.html',
+        detailLink: 'detail.html?vpn=jumpjump-vpn',
         download: 73.7,
         upload: 63.8
     },
@@ -52,7 +52,7 @@ const vpnData = [
         name: 'NashVPN',
         icon: 'assets/NashVPN/icon.webp',
         link: 'https://play.google.com/store/apps/details?id=com.nashvpn.vpn&pcampaignid=web_share',
-        detailLink: 'assets/NashVPN/nashvpn.html',
+        detailLink: 'detail.html?vpn=nashvpn',
         download: 70.6,
         upload: 43.5
     }

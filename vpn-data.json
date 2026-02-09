@@ -1,0 +1,98 @@
+[
+    {
+        "id": "adguard",
+        "name": "AdGuard",
+        "icon": "assets/AdGuard/icon.webp",
+        "shortDescription": "VPN сервис с блокировкой рекламы",
+        "description": "AdGuard VPN - это сервис от создателей популярного блокировщика рекламы. Обеспечивает конфиденциальность и безопасность в интернете.",
+        "features": [
+            "Блокировка рекламы",
+            "Защита от трекеров",
+            "Быстрые серверы",
+            "Простой интерфейс"
+        ],
+        "download": 19.4,
+        "upload": 31.1,
+        "playStoreLink": "https://play.google.com/store/apps/details?id=com.adguard.vpn&pcampaignid=web_share"
+    },
+    {
+        "id": "turbo-vpn",
+        "name": "Turbo VPN",
+        "icon": "assets/Turbo VPN/icon.webp",
+        "shortDescription": "Быстрый и бесплатный VPN сервис",
+        "description": "Turbo VPN - это популярный бесплатный VPN сервис с простым интерфейсом и быстрым подключением.",
+        "features": [
+            "Бесплатное использование",
+            "Быстрое подключение",
+            "Простой интерфейс",
+            "Неограниченный трафик"
+        ],
+        "download": 2.81,
+        "upload": 2.79,
+        "playStoreLink": "https://play.google.com/store/apps/details?id=free.vpn.unblock.proxy.turbovpn&pcampaignid=web_share"
+    },
+    {
+        "id": "octohide-vpn",
+        "name": "Octohide VPN",
+        "icon": "assets/Octohide VPN/icon.webp",
+        "shortDescription": "Конфиденциальный VPN сервис",
+        "description": "Octohide VPN обеспечивает надежную защиту вашей приватности в интернете с помощью современных технологий шифрования.",
+        "features": [
+            "Конфиденциальность",
+            "Без логов",
+            "Быстрые серверы",
+            "Простая настройка"
+        ],
+        "download": 4.94,
+        "upload": 6.98,
+        "playStoreLink": "https://play.google.com/store/apps/details?id=octohide.vpn&pcampaignid=web_share"
+    },
+    {
+        "id": "vpn-proxy-master",
+        "name": "VPN Proxy Master",
+        "icon": "assets/VPN Proxy Master/icon.webp",
+        "shortDescription": "Мастер VPN и прокси сервис",
+        "description": "VPN Proxy Master - это универсальный сервис для обхода блокировок и защиты интернет-соединения.",
+        "features": [
+            "Неограниченный трафик",
+            "Быстрое переключение серверов",
+            "Интуитивный интерфейс",
+            "Поддержка множества стран"
+        ],
+        "download": 2.83,
+        "upload": 62.0,
+        "playStoreLink": "https://play.google.com/store/apps/details?id=free.vpn.unblock.proxy.vpn.master.pro&pcampaignid=web_share"
+    },
+    {
+        "id": "jumpjump-vpn",
+        "name": "JumpJump VPN",
+        "icon": "assets/JumpJump VPN/icon.webp",
+        "shortDescription": "Самый быстрый VPN сервис",
+        "description": "JumpJump VPN предлагает высокоскоростное соединение с минимальной задержкой для комфортного серфинга в интернете.",
+        "features": [
+            "Высокая скорость",
+            "Низкая задержка",
+            "Множество серверов",
+            "Стабильное соединение"
+        ],
+        "download": 73.7,
+        "upload": 63.8,
+        "playStoreLink": "https://play.google.com/store/apps/details?id=app.jumpjumpvpn.jumpjumpvpn&pcampaignid=web_share"
+    },
+    {
+        "id": "nashvpn",
+        "name": "NashVPN",
+        "icon": "assets/NashVPN/icon.webp",
+        "shortDescription": "Наш отечественный VPN",
+        "description": "NashVPN - это российский VPN сервис с серверами по всему миру, обеспечивающий стабильное и быстрое соединение.",
+        "features": [
+            "Российский сервис",
+            "Серверы в разных странах",
+            "Техподдержка на русском",
+            "Стабильная работа"
+        ],
+        "download": 70.6,
+        "upload": 43.5,
+        "playStoreLink": "https://play.google.com/store/apps/details?id=com.nashvpn.vpn&pcampaignid=web_share"
+    }
+]
