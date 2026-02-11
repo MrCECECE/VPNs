@@ -1,0 +1,222 @@
+/* ================================
+   Detail Page Styles
+   ================================ */
+
+/* Back Link */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.back-link:hover {
+    color: var(--accent-hover);
+}
+
+/* Detail Card */
+.detail-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    margin: 20px 0;
+}
+
+/* Detail Header */
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.detail-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+    background: var(--bg-tertiary);
+}
+
+.detail-title {
+    flex: 1;
+    min-width: 200px;
+}
+
+.detail-title h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+/* Rating */
+.vpn-rating-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.rating-stars {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+.rating-stars.excellent,
+.rating-stars.good {
+    color: #facc15;
+}
+
+.rating-stars.average {
+    color: #d29922;
+}
+
+.rating-stars.low {
+    color: #f87171;
+}
+
+.rating-value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.review-count {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+/* Speed Section */
+.speed-section {
+    margin-bottom: 30px;
+}
+
+.speed-section h2 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+.speed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.speed-item {
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.speed-label {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.speed-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.speed-value.high {
+    color: var(--speed-high);
+}
+
+.speed-value.medium {
+    color: var(--speed-medium);
+}
+
+.speed-value.low {
+    color: var(--speed-low);
+}
+
+/* Action Section */
+.action-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.download-btn-large {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 15px rgba(35, 134, 54, 0.3);
+}
+
+.download-btn-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(35, 134, 54, 0.4);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin: 40px 0 20px;
+    padding: 20px;
+}
+
+.footer p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.no-results a {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detail-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .detail-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .detail-title h1 {
+        font-size: 1.5rem;
+    }
+    
+    .vpn-rating-detail {
+        justify-content: center;
+    }
+    
+    .speed-grid {
+        grid-template-columns: 1fr;
+    }
+}

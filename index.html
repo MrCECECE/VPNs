@@ -5,24 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сравнение VPN сервисов - Результаты тестирования</title>
     <meta name="description" content="Сравнение скорости VPN сервисов: скачивание и загрузка данных">
-    <link rel="stylesheet" href="styles.css">
+    <meta property="og:title" content="VPNS - Сравнение VPN сервисов">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <h1>🚀 VPN Speed Test</h1>
+            <h1>🚀 VPNS</h1>
         </div>
     </header>
 
     <main class="main">
         <div class="container">
-            <div class="search-container">
-                <input 
-                    type="text" 
-                    id="search" 
-                    placeholder="🔍 Поиск по названию сервиса..."
-                    autocomplete="off"
-                >
+            <div class="filter-row">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="search" 
+                        placeholder="🔍 Поиск по названию сервиса..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="filter-container">
+                    <div class="filter-header">
+                        <span class="filter-title">🎛️ Фильтры</span>
+                        <div class="filter-actions">
+                            <button id="toggle-filter-btn" class="toggle-filter-btn" title="Скрыть/показать фильтры">
+                                <span class="toggle-icon">▼</span>
+                            </button>
+                            <button id="reset-filters-btn" class="reset-filters-btn">Сбросить</button>
+                        </div>
+                    </div>
+                    
+                    <div id="filter-content" class="filter-content">
+                    
+                    <!-- Rating Filter -->
+                    <div class="range-filter rating-filter">
+                        <div class="range-label">
+                            <span class="range-name">
+                                <span class="rating-stars-filter">⭐</span> Рейтинг
+                            </span>
+                            <span class="range-value" id="rating-value">0+</span>
+                        </div>
+                        <input type="range" id="rating-filter" class="range-slider" min="0" max="5" step="0.1" value="0">
+                    </div>
+                    
+                    <!-- Download Filter -->
+                    <div class="range-filter">
+                        <div class="range-label">
+                            <span class="range-name">↓ Скачивание (Mbps)</span>
+                            <span class="range-value" id="download-value">0+</span>
+                        </div>
+                        <input type="range" id="download-filter" class="range-slider" min="0" max="100" step="1" value="0">
+                    </div>
+                    
+                    <!-- Upload Filter -->
+                    <div class="range-filter">
+                        <div class="range-label">
+                            <span class="range-name">↑ Загрузка (Mbps)</span>
+                            <span class="range-value" id="upload-value">0+</span>
+                        </div>
+                        <input type="range" id="upload-filter" class="range-slider" min="0" max="100" step="1" value="0">
+                    </div>
+                    </div>
+                </div>
             </div>
 
             <div class="sort-container">
@@ -31,6 +79,12 @@
                     <button data-sort="download" class="sort-btn sortable">
                         <span class="th-content">
                             Скачивание
+                            <span class="sort-icon">↕</span>
+                        </span>
+                    </button>
+                    <button data-sort="rating" class="sort-btn sortable">
+                        <span class="th-content">
+                            Рейтинг
                             <span class="sort-icon">↕</span>
                         </span>
                     </button>
@@ -57,21 +111,38 @@
                 <div class="legend-items">
                     <div class="legend-item">
                         <span class="speed-dot high"></span>
-                        <span>Быстро (>50 Mbps)</span>
+                        <span>Быстро (>10 Mbps)</span>
                     </div>
                     <div class="legend-item">
                         <span class="speed-dot medium"></span>
-                        <span>Средне (10-50 Mbps)</span>
+                        <span>Средне (5-10 Mbps)</span>
                     </div>
                     <div class="legend-item">
                         <span class="speed-dot low"></span>
-                        <span>Медленно (<10 Mbps)</span>
+                        <span>Медленно (<5 Mbps)</span>
                     </div>
                 </div>
+            </div>
+
+            <footer class="footer-beta">
+                <div class="footer-content">
+                    <span id="last-updated">📅 Обновлено: Февраль 2025</span>
+                    <button id="beta-btn" class="beta-button">Бета</button>
+                </div>
+            </footer>
+
+            <!-- Beta Mode Indicator -->
+            <div id="beta-indicator" class="beta-indicator hidden">
+                🔮 Beta Mode
+            </div>
+
+            <!-- Beta Toast Notification -->
+            <div id="beta-toast" class="beta-toast hidden">
+                <span id="beta-toast-message"></span>
             </div>
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,51 @@
+/* ================================
+   Legend Styles
+   ================================ */
+.legend {
+    margin: 40px 0;
+    padding: 25px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.legend h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.speed-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.speed-dot.high {
+    background: var(--speed-high);
+    box-shadow: 0 0 8px var(--speed-high);
+}
+
+.speed-dot.medium {
+    background: var(--speed-medium);
+    box-shadow: 0 0 8px var(--speed-medium);
+}
+
+.speed-dot.low {
+    background: var(--speed-low);
+    box-shadow: 0 0 8px var(--speed-low);
+}

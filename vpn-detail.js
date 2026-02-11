@@ -38,6 +38,41 @@ function getSpeedLabel(speed) {
 }
 
 /**
+ * Получить класс рейтинга на основе значения
+ * @param {number} rating - Рейтинг
+ * @returns {string} Класс рейтинга
+ */
+function getRatingClass(rating) {
+    if (rating >= 4.5) return 'excellent';
+    if (rating >= 4.0) return 'good';
+    if (rating >= 3.5) return 'average';
+    return 'low';
+}
+
+/**
+ * Рендерить звёзды рейтинга
+ * @param {number} rating - Рейтинг
+ * @returns {string} HTML звёзд
+ */
+function renderRatingStars(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+    
+    let stars = '';
+    for (let i = 0; i < fullStars; i++) {
+        stars += '★';
+    }
+    if (hasHalfStar) {
+        stars += '⯪';
+    }
+    for (let i = 0; i < emptyStars; i++) {
+        stars += '☆';
+    }
+    return stars;
+}
+
+/**
  * Экранировать HTML
  * @param {string} text - Текст для экранирования
  * @returns {string} Экранированный текст
@@ -73,7 +108,11 @@ function renderVPNDetail(vpn) {
                  onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔒</text></svg>'">
             <div class="detail-title">
                 <h1>${escapeHtml(vpn.name)}</h1>
-                <p>${escapeHtml(vpn.shortDescription)}</p>
+                <div class="vpn-rating-detail">
+                    <span class="rating-stars ${getRatingClass(vpn.rating)}">${renderRatingStars(vpn.rating)}</span>
+                    <span class="rating-value">${formatNumber(vpn.rating)}</span>
+                    <span class="review-count">${escapeHtml(vpn.reviewCount)} отзывов</span>
+                </div>
             </div>
         </div>
 
@@ -96,28 +135,33 @@ function renderVPNDetail(vpn) {
         </div>
 
         <div class="action-section">
-            <a href="${escapeHtml(vpn.playStoreLink)}" 
+            <a href="${escapeHtml(vpn.link)}" 
                target="_blank" 
                rel="noopener noreferrer" 
                class="download-btn-large">
                 📲 Скачать в Google Play
             </a>
         </div>
-
-        <div class="description-section">
-            <h2>📝 Описание</h2>
-            <p>${escapeHtml(vpn.description)}</p>
-        </div>
-
-        <div class="features-section">
-            <h2>✨ Особенности</h2>
-            <ul class="features-list">
-                ${vpn.features.map(feature => `<li>${escapeHtml(feature)}</li>`).join('')}
-            </ul>
-        </div>
     `;
     
     console.log(`🚀 VPN ${vpn.name} загружен`);
+}
+
+/**
+ * Обновить отображение даты обновления
+ * @param {string} lastUpdated - Дата в формате YYYY-MM-DD
+ */
+function updateLastUpdatedDisplay(lastUpdated) {
+    const dateElement = document.getElementById('footer-date');
+    if (dateElement && lastUpdated) {
+        const date = new Date(lastUpdated);
+        const months = [
+            'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+            'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+        ];
+        const formattedDate = `${months[date.getMonth()]} ${date.getFullYear()}`;
+        dateElement.textContent = `📅 Обновлено: ${formattedDate}`;
+    }
 }
 
 /**
@@ -159,7 +203,24 @@ async function init() {
             throw new Error('Не удалось загрузить данные');
         }
         
-        const vpnData = await response.json();
+        const vpnDataRaw = await response.json();
+        
+        console.log('Загруженные данные:', vpnDataRaw);
+        
+        // Поддержка новой структуры с services или старой - массив
+        const vpnData = vpnDataRaw.services || vpnDataRaw;
+        
+        console.log('VPN данные:', vpnData);
+        
+        // Проверка что vpnData это массив
+        if (!Array.isArray(vpnData)) {
+            throw new Error('Данные VPN не являются массивом');
+        }
+        
+        // Обновить дату обновления
+        if (vpnDataRaw.lastUpdated) {
+            updateLastUpdatedDisplay(vpnDataRaw.lastUpdated);
+        }
         
         // Найти VPN
         const vpn = vpnData.find(v => v.id === vpnId);

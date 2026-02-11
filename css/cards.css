@@ -1,0 +1,266 @@
+/* ================================
+   VPN Cards Styles
+   ================================ */
+
+/* Cards Container */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    margin: 20px 0 40px;
+}
+
+/* VPN Card */
+.vpn-card-link {
+    display: block;
+    height: 100%;
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+}
+
+.vpn-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    min-height: 320px;
+}
+
+.vpn-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-color);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.vpn-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--bg-tertiary);
+}
+
+.vpn-info {
+    flex: 1;
+}
+
+.vpn-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+/* Download Button */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--btn-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background var(--transition-fast);
+}
+
+.download-btn:hover {
+    background: var(--btn-hover);
+}
+
+/* Rating Styles */
+.vpn-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.vpn-rating-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.rating-stars {
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.rating-stars.excellent,
+.rating-stars.good {
+    color: #facc15;
+}
+
+.rating-stars.average {
+    color: #d29922;
+}
+
+.rating-stars.low {
+    color: #f87171;
+}
+
+.rating-value {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.review-count {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Card Speeds */
+.card-speeds {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.speed-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.speed-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.speed-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.speed-badge.high {
+    background: var(--speed-high-bg);
+    color: var(--speed-high);
+    border: 1px solid var(--speed-high);
+}
+
+.speed-badge.medium {
+    background: var(--speed-medium-bg);
+    color: var(--speed-medium);
+    border: 1px solid var(--speed-medium);
+}
+
+.speed-badge.low {
+    background: var(--speed-low-bg);
+    color: var(--speed-low);
+    border: 1px solid var(--speed-low);
+}
+
+/* Speed Indicators */
+.speed-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.indicator {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicator-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.indicator-bar {
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.indicator-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.indicator-fill.high {
+    background: linear-gradient(90deg, var(--speed-high) 0%, #4ade80 100%);
+}
+
+.indicator-fill.medium {
+    background: linear-gradient(90deg, var(--speed-medium) 0%, #facc15 100%);
+}
+
+.indicator-fill.low {
+    background: linear-gradient(90deg, var(--speed-low) 0%, #f87171 100%);
+}
+
+.indicator-value {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+/* Card Footer */
+.card-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.view-details {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.vpn-card:hover .view-details {
+    color: var(--accent-hover);
+}
+
+/* No Results Message */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}

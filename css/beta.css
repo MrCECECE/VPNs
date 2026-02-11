@@ -1,0 +1,225 @@
+/* ================================
+   Beta Button Styles
+   ================================ */
+.beta-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #a371f7 0%, #7c3aed 100%);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
+}
+
+.beta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+}
+
+.beta-button:active {
+    transform: translateY(0);
+}
+
+.footer-beta {
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#last-updated {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ================================
+   Beta Mode Indicator
+   ================================ */
+.beta-indicator {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #a371f7 0%, #7c3aed 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10000;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.beta-indicator::before {
+    content: '✨';
+    font-size: 1rem;
+}
+
+.beta-indicator.hidden {
+    display: none;
+}
+
+body.beta-mode .beta-indicator {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================
+   Beta Toast Notification
+   ================================ */
+.beta-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #a371f7 0%, #7c3aed 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 10000;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.beta-toast.hidden {
+    display: none;
+}
+
+.beta-toast.show {
+    opacity: 1;
+}
+
+/* ================================
+   Beta Mode Animations
+   ================================ */
+
+/* Gradient top bar animation */
+body.beta-mode::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #a371f7, #7c3aed, #6366f1, #a371f7);
+    background-size: 300% 100%;
+    animation: betaGradientFlow 4s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes betaGradientFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 300% 0%; }
+}
+
+/* Enhanced card animations */
+body.beta-mode .vpn-card {
+    animation: betaFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+body.beta-mode .vpn-card:nth-child(1) { animation-delay: 0.1s; }
+body.beta-mode .vpn-card:nth-child(2) { animation-delay: 0.2s; }
+body.beta-mode .vpn-card:nth-child(3) { animation-delay: 0.3s; }
+body.beta-mode .vpn-card:nth-child(4) { animation-delay: 0.4s; }
+body.beta-mode .vpn-card:nth-child(5) { animation-delay: 0.5s; }
+body.beta-mode .vpn-card:nth-child(6) { animation-delay: 0.6s; }
+body.beta-mode .vpn-card:nth-child(7) { animation-delay: 0.7s; }
+body.beta-mode .vpn-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes betaFadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced hover effects */
+body.beta-mode .vpn-card {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.beta-mode .vpn-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced filter container animation */
+body.beta-mode .filter-container {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.beta-mode .filter-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced search container animation */
+body.beta-mode .search-container {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.beta-mode .search-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Beta button pulse animation */
+body.beta-mode .beta-button {
+    animation: betaPulse 3s ease-in-out infinite;
+}
+
+@keyframes betaPulse {
+    0%, 100% {
+        box-shadow: 0 2px 15px rgba(124, 58, 237, 0.4);
+    }
+    50% {
+        box-shadow: 0 2px 25px rgba(124, 58, 237, 0.7);
+    }
+}
+
+/* Smooth sort buttons animation */
+body.beta-mode .sort-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.beta-mode .sort-btn:hover {
+    transform: translateY(-2px);
+    background: var(--bg-tertiary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Legend animation */
+body.beta-mode .legend {
+    animation: betaFadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+@keyframes betaFadeIn {
+    to { opacity: 1; }
+}
+
+/* Input focus enhancement */
+body.beta-mode .search-container input:focus {
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
+}
