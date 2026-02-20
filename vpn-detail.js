@@ -3,6 +3,8 @@
  * Использует общие утилиты из js/utils-shared.js
  */
 
+import { escapeHtml, getSpeedClass, getRatingClass, renderRatingStars, formatNumber } from './js/utils-shared.js';
+
 // ================================
 // Render Functions
 // ================================
