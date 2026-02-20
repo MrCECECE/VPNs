@@ -28,12 +28,14 @@
     border-radius: 8px;
     color: var(--text-primary);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 0.9rem;
 }
 
 .sort-btn:hover {
+    transform: translateY(-2px);
     background: var(--bg-tertiary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-color: var(--accent-color);
 }
 
@@ -41,6 +43,14 @@
     background: var(--bg-tertiary);
     border-color: var(--accent-color);
     color: var(--accent-color);
+}
+
+.sort-btn.sorted-asc .sort-icon::after {
+    content: '↑';
+}
+
+.sort-btn.sorted-desc .sort-icon::after {
+    content: '↓';
 }
 
 .th-content {

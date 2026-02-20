@@ -18,11 +18,13 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: box-shadow var(--transition-fast);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
 }
 
 .search-container:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .search-container input {
@@ -43,7 +45,7 @@
 
 .search-container input:focus {
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.15);
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
 }
 
 /* Filter Container */
@@ -54,11 +56,13 @@
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: box-shadow var(--transition-fast);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
 }
 
 .filter-container:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .filter-header {
@@ -105,12 +109,12 @@
     transform: rotate(-90deg);
 }
 
-/* Hidden state for beta mode */
-body.beta-mode .filter-container.collapsed {
+/* Hidden state for filter content */
+.filter-container.collapsed {
     padding: 15px 20px;
 }
 
-body.beta-mode .filter-content {
+.filter-content {
     display: block;
     max-height: 500px;
     opacity: 1;
@@ -118,7 +122,7 @@ body.beta-mode .filter-content {
     transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
 }
 
-body.beta-mode .filter-content.hidden {
+.filter-content.hidden {
     max-height: 0;
     opacity: 0;
     margin-top: 0;

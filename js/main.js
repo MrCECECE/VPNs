@@ -70,63 +70,6 @@ async function init() {
 document.addEventListener('DOMContentLoaded', init);
 
 /**
- * Beta Mode - Переключение beta-режима
- */
-function initBetaMode() {
-    const betaBtn = document.getElementById('beta-btn');
-    
-    if (!betaBtn) return;
-    
-    // Проверить сохранённое состояние
-    const isBetaMode = localStorage.getItem('betaMode') === 'true';
-    
-    // Применить сохранённое состояние
-    if (isBetaMode) {
-        document.body.classList.add('beta-mode');
-    }
-    
-    // Обработчик клика
-    betaBtn.addEventListener('click', () => {
-        const body = document.body;
-        const isEnabled = body.classList.toggle('beta-mode');
-        
-        // Сохранить состояние
-        localStorage.setItem('betaMode', isEnabled);
-        
-        // Показать уведомление
-        showBetaToast(isEnabled ? '✨ Beta-режим включён!' : '👋 Beta-режим выключен');
-        
-        console.log(`🚀 Beta Mode: ${isEnabled ? 'ON' : 'OFF'}`);
-    });
-}
-
-/**
- * Показать toast-уведомление
- */
-function showBetaToast(message) {
-    const toast = document.getElementById('beta-toast');
-    const toastMessage = document.getElementById('beta-toast-message');
-    
-    if (!toast || !toastMessage) return;
-    
-    toastMessage.textContent = message;
-    toast.classList.remove('hidden');
-    
-    // Добавить класс для анимации появления
-    requestAnimationFrame(() => {
-        toast.classList.add('show');
-    });
-    
-    // Скрыть через 3 секунды
-    setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => {
-            toast.classList.add('hidden');
-        }, 400);
-    }, 3000);
-}
-
-/**
  * Toggle Filter - Сворачивание/разворачивание фильтров
  */
 function initToggleFilter() {
@@ -155,9 +98,6 @@ function initToggleFilter() {
         console.log(`🎛️ Filter: ${isHidden ? 'collapsed' : 'expanded'}`);
     });
 }
-
-// Инициализировать beta-режим
-initBetaMode();
 
 // Инициализировать переключение фильтра
 initToggleFilter();

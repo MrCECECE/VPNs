@@ -1,16 +1,24 @@
 // ================================
-// Utility Functions - Утилиты
+// Shared Utility Functions
+// Используются в main.js и vpn-detail.js
 // ================================
+
+// Пороги для определения класса скорости (main page)
+const SPEED_THRESHOLDS = {
+    main: { high: 10, medium: 5 },
+    detail: { high: 50, medium: 10 }
+};
 
 /**
  * Получить класс скорости на основе значения
- * Легенда: Быстро (>10 Mbps), Средне (5-10 Mbps), Медленно (<5 Mbps)
  * @param {number} speed - Скорость в Mbps
+ * @param {string} mode - 'main' или 'detail'
  * @returns {string} Класс скорости
  */
-export function getSpeedClass(speed) {
-    if (speed >= 10) return 'high';
-    if (speed >= 5) return 'medium';
+export function getSpeedClass(speed, mode = 'main') {
+    const t = SPEED_THRESHOLDS[mode] || SPEED_THRESHOLDS.main;
+    if (speed >= t.high) return 'high';
+    if (speed >= t.medium) return 'medium';
     return 'low';
 }
 
@@ -26,11 +34,13 @@ export function formatNumber(num) {
 /**
  * Получить текстовую метку скорости
  * @param {number} speed - Скорость в Mbps
+ * @param {string} mode - 'main' или 'detail'
  * @returns {string} Текстовая метка
  */
-export function getSpeedLabel(speed) {
-    if (speed >= 10) return 'Быстро';
-    if (speed >= 5) return 'Средне';
+export function getSpeedLabel(speed, mode = 'main') {
+    const t = SPEED_THRESHOLDS[mode] || SPEED_THRESHOLDS.main;
+    if (speed >= t.high) return 'Быстро';
+    if (speed >= t.medium) return 'Средне';
     return 'Медленно';
 }
 
@@ -57,15 +67,9 @@ export function renderRatingStars(rating) {
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
     
     let stars = '';
-    for (let i = 0; i < fullStars; i++) {
-        stars += '★';
-    }
-    if (hasHalfStar) {
-        stars += '⯪';
-    }
-    for (let i = 0; i < emptyStars; i++) {
-        stars += '☆';
-    }
+    for (let i = 0; i < fullStars; i++) stars += '★';
+    if (hasHalfStar) stars += '⯪';
+    for (let i = 0; i < emptyStars; i++) stars += '☆';
     return stars;
 }
 

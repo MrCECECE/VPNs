@@ -1,6 +1,26 @@
 /* ================================
    Header Styles
    ================================ */
+
+/* Gradient top bar */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #a371f7, #7c3aed, #6366f1, #a371f7);
+    background-size: 300% 100%;
+    animation: gradientFlow 4s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 300% 0%; }
+}
+
 .header {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
     padding: 40px 0;
