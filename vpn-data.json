@@ -1,71 +1,203 @@
 {
-    "lastUpdated": "2025-02-10",
+    "lastUpdated": "2026-08-24",
     "services": [
         {
-            "id": "adguard",
-            "name": "AdGuard",
-            "icon": "assets/AdGuard/icon.webp",
-            "link": "https://play.google.com/store/apps/details?id=com.adguard.vpn&pcampaignid=web_share",
-            "detailLink": "detail.html?vpn=adguard",
-            "download": 19.4,
-            "upload": 31.1,
-            "rating": 4.3,
-            "reviewCount": "148 тыс."
+            "id": "ping-vpn",
+            "name": "Ping VPN",
+            "icon": "assets/Ping VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.pingsecure.client.app",
+            "detailLink": "detail.html?vpn=ping-vpn",
+            "rating": 4.7,
+            "reviewCount": "117,2 тыс.",
+            "screenshots": [
+                "assets/Ping VPN/screenshots/01.webp",
+                "assets/Ping VPN/screenshots/02.webp",
+                "assets/Ping VPN/screenshots/03.webp",
+                "assets/Ping VPN/screenshots/04.webp"
+            ]
         },
         {
-            "id": "turbo-vpn",
-            "name": "Turbo VPN",
-            "icon": "assets/Turbo VPN/icon.webp",
-            "link": "https://play.google.com/store/apps/details?id=free.vpn.unblock.proxy.turbovpn&pcampaignid=web_share",
-            "detailLink": "detail.html?vpn=turbo-vpn",
-            "download": 2.81,
-            "upload": 2.79,
+            "id": "lagom-vpn",
+            "name": "Lagom: Fast VPN Proxy",
+            "icon": "assets/Lagom/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.lagomproductsllc.lagomvpn",
+            "detailLink": "detail.html?vpn=lagom-vpn",
+            "rating": 4.7,
+            "reviewCount": "167,4 тыс.",
+            "screenshots": [
+                "assets/Lagom/screenshots/01.webp",
+                "assets/Lagom/screenshots/02.webp",
+                "assets/Lagom/screenshots/03.webp",
+                "assets/Lagom/screenshots/04.webp",
+                "assets/Lagom/screenshots/05.webp",
+                "assets/Lagom/screenshots/06.webp"
+            ]
+        },
+        {
+            "id": "tiptop-vpn",
+            "name": "VPN proxy - TipTop VPN",
+            "icon": "assets/TipTop VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.free.tiptop.vpn.proxy",
+            "detailLink": "detail.html?vpn=tiptop-vpn",
+            "rating": 4.5,
+            "reviewCount": "821,8 тыс.",
+            "screenshots": [
+                "assets/TipTop VPN/screenshots/01.webp",
+                "assets/TipTop VPN/screenshots/02.webp",
+                "assets/TipTop VPN/screenshots/03.webp",
+                "assets/TipTop VPN/screenshots/04.webp",
+                "assets/TipTop VPN/screenshots/05.webp",
+                "assets/TipTop VPN/screenshots/06.webp"
+            ]
+        },
+        {
+            "id": "pipl-vpn",
+            "name": "Pipl VPN: рабочий впн",
+            "icon": "assets/Pipl VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.piplnetwork.piplvpn",
+            "detailLink": "detail.html?vpn=pipl-vpn",
             "rating": 4.6,
-            "reviewCount": "9,65 млн"
+            "reviewCount": "165,5 тыс.",
+            "screenshots": [
+                "assets/Pipl VPN/screenshots/01.webp",
+                "assets/Pipl VPN/screenshots/02.webp",
+                "assets/Pipl VPN/screenshots/03.webp",
+                "assets/Pipl VPN/screenshots/04.webp",
+                "assets/Pipl VPN/screenshots/05.webp",
+                "assets/Pipl VPN/screenshots/06.webp"
+            ]
+        },
+        {
+            "id": "super-vpn",
+            "name": "VPN Proxy Speed - Super VPN",
+            "icon": "assets/Super VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.supervpn.vpn.free.proxy",
+            "detailLink": "detail.html?vpn=super-vpn",
+            "rating": 4.0,
+            "reviewCount": "1,62 млн",
+            "screenshots": [
+                "assets/Super VPN/screenshots/01.webp",
+                "assets/Super VPN/screenshots/02.webp",
+                "assets/Super VPN/screenshots/03.webp",
+                "assets/Super VPN/screenshots/04.webp",
+                "assets/Super VPN/screenshots/05.webp",
+                "assets/Super VPN/screenshots/06.webp"
+            ]
+        },
+        {
+            "id": "speedtop-vpn",
+            "name": "SpeedTop VPN: Fast & Secure",
+            "icon": "assets/SpeedTop VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=io.speedtop.app",
+            "detailLink": "detail.html?vpn=speedtop-vpn",
+            "rating": 4.3,
+            "reviewCount": "152,1 тыс.",
+            "screenshots": [
+                "assets/SpeedTop VPN/screenshots/01.webp",
+                "assets/SpeedTop VPN/screenshots/02.webp",
+                "assets/SpeedTop VPN/screenshots/03.webp",
+                "assets/SpeedTop VPN/screenshots/04.webp",
+                "assets/SpeedTop VPN/screenshots/05.webp"
+            ]
+        },
+        {
+            "id": "gnuvpn",
+            "name": "GnuVPN: Super Fast VPN Proxy",
+            "icon": "assets/GnuVPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.gnu.vpn",
+            "detailLink": "detail.html?vpn=gnuvpn",
+            "rating": 4.1,
+            "reviewCount": "32,7 тыс.",
+            "screenshots": [
+                "assets/GnuVPN/screenshots/01.webp",
+                "assets/GnuVPN/screenshots/02.webp",
+                "assets/GnuVPN/screenshots/03.webp",
+                "assets/GnuVPN/screenshots/04.webp",
+                "assets/GnuVPN/screenshots/05.webp",
+                "assets/GnuVPN/screenshots/06.webp"
+            ]
+        },
+        {
+            "id": "tuman-vpn",
+            "name": "Tuman VPN — Fast VPN & Proxy",
+            "icon": "assets/Tuman VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.tumanvpn.app",
+            "detailLink": "detail.html?vpn=tuman-vpn",
+            "rating": 4.7,
+            "reviewCount": "31,9 тыс.",
+            "screenshots": [
+                "assets/Tuman VPN/screenshots/01.webp",
+                "assets/Tuman VPN/screenshots/02.webp",
+                "assets/Tuman VPN/screenshots/03.webp",
+                "assets/Tuman VPN/screenshots/04.webp",
+                "assets/Tuman VPN/screenshots/05.webp",
+                "assets/Tuman VPN/screenshots/06.webp"
+            ]
+        },
+        {
+            "id": "cybear-vpn",
+            "name": "Fast VPN: Secure Speedy Proxy",
+            "icon": "assets/Fast VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.cybear.vpn.proxy.connect",
+            "detailLink": "detail.html?vpn=cybear-vpn",
+            "rating": 4.8,
+            "reviewCount": "27,6 тыс.",
+            "screenshots": [
+                "assets/Fast VPN/screenshots/01.webp",
+                "assets/Fast VPN/screenshots/02.webp",
+                "assets/Fast VPN/screenshots/03.webp",
+                "assets/Fast VPN/screenshots/04.webp",
+                "assets/Fast VPN/screenshots/05.webp",
+                "assets/Fast VPN/screenshots/06.webp"
+            ]
+        },
+        {
+            "id": "whale-vpn",
+            "name": "Whale VPN",
+            "icon": "assets/Whale VPN/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=digital.pinnaclewave.vpn.work.huade",
+            "detailLink": "detail.html?vpn=whale-vpn",
+            "rating": 4.2,
+            "reviewCount": "18,2 тыс.",
+            "screenshots": [
+                "assets/Whale VPN/screenshots/01.webp",
+                "assets/Whale VPN/screenshots/02.webp",
+                "assets/Whale VPN/screenshots/03.webp"
+            ]
+        },
+        {
+            "id": "vpnify",
+            "name": "vpnify - Unlimited VPN Proxy",
+            "icon": "assets/vpnify/icon.webp",
+            "link": "https://play.google.com/store/apps/details?id=com.vpn.free.hotspot.secure.vpnify",
+            "detailLink": "detail.html?vpn=vpnify",
+            "rating": 3.7,
+            "reviewCount": "2,47 млн",
+            "screenshots": [
+                "assets/vpnify/screenshots/01.webp",
+                "assets/vpnify/screenshots/02.webp",
+                "assets/vpnify/screenshots/03.webp",
+                "assets/vpnify/screenshots/04.webp",
+                "assets/vpnify/screenshots/05.webp",
+                "assets/vpnify/screenshots/06.webp"
+            ]
         },
         {
             "id": "octohide-vpn",
-            "name": "Octohide VPN",
+            "name": "Octohide VPN - Fast & Secure",
             "icon": "assets/Octohide VPN/icon.webp",
-            "link": "https://play.google.com/store/apps/details?id=octohide.vpn&pcampaignid=web_share",
+            "link": "https://play.google.com/store/apps/details?id=octohide.vpn",
             "detailLink": "detail.html?vpn=octohide-vpn",
-            "download": 4.94,
-            "upload": 6.98,
-            "rating": 3.4,
-            "reviewCount": "48 тыс."
-        },
-        {
-            "id": "vpn-proxy-master",
-            "name": "VPN Proxy Master",
-            "icon": "assets/VPN Proxy Master/icon.webp",
-            "link": "https://play.google.com/store/apps/details?id=free.vpn.unblock.proxy.vpn.master.pro&pcampaignid=web_share",
-            "detailLink": "detail.html?vpn=vpn-proxy-master",
-            "download": 2.83,
-            "upload": 62.0,
-            "rating": 4.6,
-            "reviewCount": "1,35 млн"
-        },
-        {
-            "id": "jumpjump-vpn",
-            "name": "JumpJump VPN",
-            "icon": "assets/JumpJump VPN/icon.webp",
-            "link": "https://play.google.com/store/apps/details?id=app.jumpjumpvpn.jumpjumpvpn&pcampaignid=web_share",
-            "detailLink": "detail.html?vpn=jumpjump-vpn",
-            "download": 73.7,
-            "upload": 63.8,
-            "rating": 4.7,
-            "reviewCount": "266 тыс."
-        },
-        {
-            "id": "nashvpn",
-            "name": "NashVPN",
-            "icon": "assets/NashVPN/icon.webp",
-            "link": "https://play.google.com/store/apps/details?id=com.nashvpn.vpn&pcampaignid=web_share",
-            "detailLink": "detail.html?vpn=nashvpn",
-            "download": 70.6,
-            "upload": 43.5,
             "rating": 3.2,
-            "reviewCount": "35,8 тыс."
+            "reviewCount": "68,7 тыс.",
+            "screenshots": [
+                "assets/Octohide VPN/screenshots/01.webp",
+                "assets/Octohide VPN/screenshots/02.webp",
+                "assets/Octohide VPN/screenshots/03.webp",
+                "assets/Octohide VPN/screenshots/04.webp",
+                "assets/Octohide VPN/screenshots/05.webp",
+                "assets/Octohide VPN/screenshots/06.webp"
+            ]
         }
     ]
 }

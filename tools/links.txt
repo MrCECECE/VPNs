@@ -1,0 +1,14 @@
+# Вставьте сюда ссылки на приложения Google Play - по одной на строку.
+# Пустые строки и строки, начинающиеся с #, игнорируются.
+https://play.google.com/store/apps/details?id=com.pingsecure.client.app
+https://play.google.com/store/apps/details?id=com.lagomproductsllc.lagomvpn
+https://play.google.com/store/apps/details?id=com.free.tiptop.vpn.proxy
+https://play.google.com/store/apps/details?id=com.piplnetwork.piplvpn
+https://play.google.com/store/apps/details?id=com.supervpn.vpn.free.proxy
+https://play.google.com/store/apps/details?id=io.speedtop.app
+https://play.google.com/store/apps/details?id=com.gnu.vpn
+https://play.google.com/store/apps/details?id=com.tumanvpn.app
+https://play.google.com/store/apps/details?id=com.cybear.vpn.proxy.connect
+https://play.google.com/store/apps/details?id=digital.pinnaclewave.vpn.work.huade
+https://play.google.com/store/apps/details?id=com.vpn.free.hotspot.secure.vpnify
+https://play.google.com/store/apps/details?id=octohide.vpn

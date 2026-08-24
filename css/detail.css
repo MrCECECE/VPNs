@@ -142,6 +142,122 @@
     color: var(--speed-low);
 }
 
+/* Screenshots Gallery */
+.screenshots-section {
+    margin-bottom: 30px;
+}
+
+.screenshots-section h2 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+.screenshots-strip {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 4px 4px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.screenshot-thumb {
+    flex-shrink: 0;
+    width: 150px;
+    height: 300px;
+    padding: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: zoom-in;
+    background: var(--bg-tertiary);
+    transition: border-color var(--transition-fast),
+                transform var(--transition-fast);
+}
+
+.screenshot-thumb:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+.screenshot-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+.lightbox-img {
+    max-width: min(92vw, 700px);
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.lightbox-close:hover {
+    background: var(--bg-tertiary);
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 64px;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.lightbox-nav:hover {
+    background: var(--bg-tertiary);
+}
+
+.lightbox-prev {
+    left: 14px;
+}
+
+.lightbox-next {
+    right: 14px;
+}
+
 /* Action Section */
 .action-section {
     text-align: center;
@@ -214,6 +330,16 @@
     
     .vpn-rating-detail {
         justify-content: center;
+    }
+
+    .screenshot-thumb {
+        width: 120px;
+        height: 240px;
+    }
+
+    .lightbox-nav {
+        width: 40px;
+        height: 56px;
     }
     
     .speed-grid {

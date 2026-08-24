@@ -1,6 +1,8 @@
 /* ================================
    CSS Variables & Colors
    ================================ */
+
+/* Тёмная тема - по умолчанию */
 :root {
     /* Background colors */
     --bg-primary: #0d1117;
@@ -36,4 +38,32 @@
     /* Transitions */
     --transition-fast: 0.15s ease;
     --transition-normal: 0.25s ease;
+}
+
+/* Светлая тема */
+:root[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f6f8fa;
+    --bg-tertiary: #e9edf1;
+
+    --border-color: #d5dbe1;
+    --text-primary: #1f2328;
+    --text-secondary: #59636e;
+
+    --accent-color: #0969da;
+    --accent-hover: #0550ae;
+
+    --speed-high: #1a7f37;
+    --speed-high-bg: rgba(26, 127, 55, 0.12);
+    --speed-medium: #9a6700;
+    --speed-medium-bg: rgba(154, 103, 0, 0.12);
+    --speed-low: #cf222e;
+    --speed-low-bg: rgba(207, 34, 46, 0.12);
+
+    --btn-primary: #238636;
+    --btn-hover: #2ea043;
+
+    --shadow-sm: 0 1px 2px rgba(31, 35, 40, 0.08);
+    --shadow-md: 0 4px 6px rgba(31, 35, 40, 0.1);
+    --shadow-lg: 0 10px 20px rgba(31, 35, 40, 0.16);
 }

@@ -18,23 +18,30 @@ export function filterTable(query) {
  * Обновить отображение значений фильтров
  */
 export function updateFilterDisplays() {
-    // Rating
+    // Rating (поле - числовой input)
     const ratingValue = document.getElementById('rating-value');
     if (ratingValue) {
-        ratingValue.textContent = currentFilters.rating > 0 ? `${currentFilters.rating.toFixed(1)}+` : '0+';
+        ratingValue.value = currentFilters.rating > 0 ? currentFilters.rating.toFixed(1) : '0';
     }
-    
-    // Download
-    const downloadValue = document.getElementById('download-value');
-    if (downloadValue) {
-        downloadValue.textContent = currentFilters.download > 0 ? `${currentFilters.download}+` : '0+';
-    }
-    
-    // Upload
-    const uploadValue = document.getElementById('upload-value');
-    if (uploadValue) {
-        uploadValue.textContent = currentFilters.upload > 0 ? `${currentFilters.upload}+` : '0+';
-    }
+}
+
+/**
+ * Применить значение, введённое с клавиатуры в поле рейтинга
+ * @param {HTMLInputElement} ratingValue - Поле ввода
+ */
+function commitRatingInput(ratingValue) {
+    let val = parseFloat(String(ratingValue.value).replace(',', '.'));
+    if (Number.isNaN(val)) val = 0;
+    val = Math.min(5, Math.max(0, val));
+
+    ratingValue.value = val > 0 ? val.toFixed(1) : '0';
+
+    // Синхронизировать ползунок
+    const ratingFilter = document.getElementById('rating-filter');
+    if (ratingFilter) ratingFilter.value = val;
+
+    currentFilters.rating = val;
+    applyFilters();
 }
 
 /**
@@ -55,17 +62,7 @@ export function applyFilters() {
     if (currentFilters.rating > 0) {
         tempData = tempData.filter(item => item.rating >= currentFilters.rating);
     }
-    
-    // Фильтр по скачиванию
-    if (currentFilters.download > 0) {
-        tempData = tempData.filter(item => item.download >= currentFilters.download);
-    }
-    
-    // Фильтр по загрузке
-    if (currentFilters.upload > 0) {
-        tempData = tempData.filter(item => item.upload >= currentFilters.upload);
-    }
-    
+
     filteredData.length = 0;
     tempData.forEach(item => filteredData.push(item));
     
@@ -82,19 +79,13 @@ export function applyFilters() {
  */
 export function resetFilters() {
     currentFilters.rating = 0;
-    currentFilters.download = 0;
-    currentFilters.upload = 0;
     currentFilters.search = '';
     
     // Сбросить значения ползунков в UI
     const ratingFilter = document.getElementById('rating-filter');
-    const downloadFilter = document.getElementById('download-filter');
-    const uploadFilter = document.getElementById('upload-filter');
     const searchInput = document.getElementById('search');
     
     if (ratingFilter) ratingFilter.value = 0;
-    if (downloadFilter) downloadFilter.value = 0;
-    if (uploadFilter) uploadFilter.value = 0;
     if (searchInput) searchInput.value = '';
     
     // Обновить отображение
@@ -117,24 +108,14 @@ export function initFilterListeners() {
             applyFilters();
         });
     }
-    
-    // Download filter
-    const downloadFilter = document.getElementById('download-filter');
-    if (downloadFilter) {
-        downloadFilter.addEventListener('input', (e) => {
-            currentFilters.download = parseFloat(e.target.value);
-            updateFilterDisplays();
-            applyFilters();
-        });
-    }
-    
-    // Upload filter
-    const uploadFilter = document.getElementById('upload-filter');
-    if (uploadFilter) {
-        uploadFilter.addEventListener('input', (e) => {
-            currentFilters.upload = parseFloat(e.target.value);
-            updateFilterDisplays();
-            applyFilters();
+
+    // Rating ручной ввод с клавиатуры
+    const ratingValue = document.getElementById('rating-value');
+    if (ratingValue) {
+        ratingValue.addEventListener('change', () => commitRatingInput(ratingValue));
+        ratingValue.addEventListener('blur', () => commitRatingInput(ratingValue));
+        ratingValue.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') ratingValue.blur();
         });
     }
     

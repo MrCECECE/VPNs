@@ -6,7 +6,7 @@
 .filter-row {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     margin: 20px 0 30px;
 }
 
@@ -14,125 +14,90 @@
 .search-container {
     width: 100%;
     background: var(--bg-secondary);
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform, box-shadow;
+    padding: 8px 14px;
+    transition: border-color var(--transition-fast);
 }
 
-.search-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+.search-container:focus-within {
+    border-color: var(--accent-color);
 }
 
 .search-container input {
     width: 100%;
-    padding: 14px 20px;
+    padding: 9px 6px;
     font-size: 1rem;
-    background: var(--bg-primary);
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
+    background: transparent;
+    border: none;
     color: var(--text-primary);
     outline: none;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .search-container input::placeholder {
     color: var(--text-secondary);
 }
 
-.search-container input:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2);
-}
-
-/* Filter Container */
+/* Filter Container - одна компактная строка */
 .filter-container {
     width: 100%;
     background: var(--bg-secondary);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform, box-shadow;
-}
-
-.filter-container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.filter-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.filter-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.toggle-filter-btn {
-    background: var(--bg-tertiary);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 6px 10px;
-    cursor: pointer;
-    color: var(--text-secondary);
-    transition: all var(--transition-fast);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.toggle-filter-btn:hover {
-    background: var(--bg-secondary);
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-}
-
-.toggle-icon {
-    font-size: 0.7rem;
-    transition: transform var(--transition-fast);
-    display: block;
-}
-
-.toggle-filter-btn.collapsed .toggle-icon {
-    transform: rotate(-90deg);
-}
-
-/* Hidden state for filter content */
-.filter-container.collapsed {
-    padding: 15px 20px;
+    border-radius: 12px;
+    padding: 8px 14px;
+    transition: border-color var(--transition-fast);
 }
 
 .filter-content {
-    display: block;
-    max-height: 500px;
-    opacity: 1;
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
-.filter-content.hidden {
-    max-height: 0;
-    opacity: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+.range-name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.filter-title {
-    font-size: 0.95rem;
+.rating-stars-filter {
+    color: #facc15;
+    font-size: 0.9rem;
+}
+
+.range-value {
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-primary);
+    font-family: inherit;
+    color: var(--accent-color);
+    background: var(--bg-tertiary);
+    border: 1px solid transparent;
+    padding: 2px 6px;
+    border-radius: 4px;
+    width: 46px;
+    text-align: center;
+    transition: border-color var(--transition-fast);
+}
+
+.range-value:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Убрать стрелки-спиннеры у number input */
+.range-value::-webkit-outer-spin-button,
+.range-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.range-value {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .reset-filters-btn {
@@ -141,6 +106,7 @@
     color: var(--accent-color);
     font-size: 0.85rem;
     cursor: pointer;
+    white-space: nowrap;
     transition: color var(--transition-fast);
 }
 
@@ -148,40 +114,11 @@
     color: var(--accent-hover);
 }
 
-/* Range Filter */
-.range-filter {
-    margin-bottom: 15px;
-}
-
-.range-filter:last-child {
-    margin-bottom: 0;
-}
-
-.range-label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.range-name {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-.range-value {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-color);
-    background: var(--bg-tertiary);
-    padding: 2px 8px;
-    border-radius: 4px;
-}
-
 /* Range Slider Styling */
 .range-slider {
-    position: relative;
-    width: 100%;
+    flex: 1;
+    min-width: 80px;
+    max-width: 260px;
     height: 6px;
     background: var(--bg-tertiary);
     border-radius: 3px;
@@ -189,13 +126,14 @@
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 .range-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: var(--accent-color);
     border-radius: 50%;
     cursor: pointer;
@@ -208,8 +146,8 @@
 }
 
 .range-slider::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: var(--accent-color);
     border-radius: 50%;
     cursor: pointer;
@@ -222,43 +160,16 @@
     box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
 }
 
-/* Rating Stars in Filter */
-.rating-filter .range-name {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.rating-stars-filter {
-    color: #facc15;
-    font-size: 0.9rem;
-}
-
 /* Responsive */
-@media (max-width: 768px) {
-    .filter-row {
-        gap: 15px;
+@media (max-width: 560px) {
+    .filter-content {
+        flex-wrap: wrap;
+        row-gap: 6px;
     }
-    
-    .search-container,
-    .filter-container {
-        padding: 15px;
-    }
-    
-    .filter-header {
-        margin-bottom: 12px;
-    }
-    
-    .range-filter {
-        margin-bottom: 12px;
-    }
-    
-    .range-name {
-        font-size: 0.8rem;
-    }
-    
-    .range-value {
-        font-size: 0.8rem;
-        padding: 2px 6px;
+
+    .range-slider {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
     }
 }

@@ -3,14 +3,14 @@
  * Использует общие утилиты из js/utils-shared.js
  */
 
-import { escapeHtml, getSpeedClass, getRatingClass, renderRatingStars, formatNumber } from './js/utils-shared.js';
+import { escapeHtml, getRatingClass, renderRatingStars, formatNumber } from './js/utils-shared.js';
 
 // ================================
 // Render Functions
 // ================================
 
 /**
- * Рендерить страницу с детальной информацией VPN
+ * Отрендерить страницу с детальной информацией VPN
  * @param {Object} vpn - Данные VPN
  */
 function renderVPNDetail(vpn) {
@@ -20,6 +20,8 @@ function renderVPNDetail(vpn) {
     // Обновить meta description
     document.querySelector('meta[name="description"]').content = `Подробная информация о VPN сервисе ${vpn.name}`;
     
+    const screenshots = Array.isArray(vpn.screenshots) ? vpn.screenshots : [];
+
     // Рендерить контент
     const container = document.getElementById('vpn-content');
     container.innerHTML = `
@@ -40,23 +42,21 @@ function renderVPNDetail(vpn) {
             </div>
         </div>
 
-        <div class="speed-section">
-            <h2>📊 Результаты тестирования</h2>
-            <div class="speed-grid">
-                <div class="speed-item">
-                    <span class="speed-label">↓ Скачивание</span>
-                    <span class="speed-value ${getSpeedClass(vpn.download, 'detail')}">
-                        ${formatNumber(vpn.download)} Mbps
-                    </span>
-                </div>
-                <div class="speed-item">
-                    <span class="speed-label">↑ Загрузка</span>
-                    <span class="speed-value ${getSpeedClass(vpn.upload, 'detail')}">
-                        ${formatNumber(vpn.upload)} Mbps
-                    </span>
-                </div>
+        ${screenshots.length > 0 ? `
+        <section class="screenshots-section">
+            <h2>📱 Скриншоты</h2>
+            <div class="screenshots-strip">
+                ${screenshots.map((src, i) => `
+                    <button type="button" class="screenshot-thumb" data-index="${i}">
+                        <img src="${escapeHtml(src)}"
+                             alt="Скриншот ${i + 1} — ${escapeHtml(vpn.name)}"
+                             loading="lazy"
+                             onerror="this.closest('.screenshot-thumb').remove()">
+                    </button>
+                `).join('')}
             </div>
-        </div>
+        </section>
+        ` : ''}
 
         <div class="action-section">
             <a href="${escapeHtml(vpn.link)}" 
@@ -68,7 +68,71 @@ function renderVPNDetail(vpn) {
         </div>
     `;
     
+    if (screenshots.length > 0) {
+        initLightbox(screenshots);
+    }
+
     console.log(`🚀 VPN ${vpn.name} загружен`);
+}
+
+// ================================
+// Lightbox - Полноэкранный просмотр скриншотов
+// ================================
+
+/**
+ * Инициализировать лайтбокс для скриншотов
+ * @param {string[]} screenshots - Пути к скриншотам
+ */
+function initLightbox(screenshots) {
+    let currentIndex = 0;
+
+    const overlay = document.createElement('div');
+    overlay.id = 'lightbox';
+    overlay.className = 'lightbox';
+    overlay.hidden = true;
+    overlay.innerHTML = `
+        <button type="button" class="lightbox-close" aria-label="Закрыть">✕</button>
+        <button type="button" class="lightbox-nav lightbox-prev" aria-label="Предыдущий">‹</button>
+        <img class="lightbox-img" src="" alt="Просмотр скриншота">
+        <button type="button" class="lightbox-nav lightbox-next" aria-label="Следующий">›</button>
+    `;
+    document.body.appendChild(overlay);
+
+    const img = overlay.querySelector('.lightbox-img');
+
+    function show(index) {
+        currentIndex = (index + screenshots.length) % screenshots.length;
+        img.src = screenshots[currentIndex];
+    }
+
+    function open(index) {
+        show(index);
+        overlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+        overlay.hidden = true;
+        img.src = '';
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('#vpn-content .screenshot-thumb').forEach((thumb, i) => {
+        thumb.addEventListener('click', () => open(i));
+    });
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay || e.target.classList.contains('lightbox-close')) close();
+        if (e.target.classList.contains('lightbox-prev')) show(currentIndex - 1);
+        if (e.target.classList.contains('lightbox-next')) show(currentIndex + 1);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (overlay.hidden) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') show(currentIndex - 1);
+        if (e.key === 'ArrowRight') show(currentIndex + 1);
+    });
 }
 
 /**
@@ -120,23 +184,13 @@ async function init() {
             return;
         }
         
-        // Загрузить данные (с кэшированием в sessionStorage)
-        let vpnDataRaw;
-        const cachedData = sessionStorage.getItem('vpnData');
-        
-        if (cachedData) {
-            vpnDataRaw = JSON.parse(cachedData);
-            console.log('Данные загружены из кэша');
-        } else {
-            const response = await fetch('vpn-data.json');
-            if (!response.ok) {
-                throw new Error('Не удалось загрузить данные');
-            }
-            vpnDataRaw = await response.json();
-            // Сохранить в sessionStorage
-            sessionStorage.setItem('vpnData', JSON.stringify(vpnDataRaw));
-            console.log('Данные загружены с сервера и сохранены в кэш');
+        // no-cache: всегда сверять с сервером, чтобы данные не застаивались
+        const response = await fetch('vpn-data.json', { cache: 'no-cache' });
+        if (!response.ok) {
+            throw new Error('Не удалось загрузить данные');
         }
+        const vpnDataRaw = await response.json();
+        console.log('Данные загружены с сервера');
         
         // Поддержка новой структуры с services или старой - массив
         const vpnData = vpnDataRaw.services || vpnDataRaw;

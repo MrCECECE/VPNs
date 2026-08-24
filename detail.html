@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">VPN Speed Test</title>
     <meta name="description" content="Подробная информация о VPN сервисе">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/main.css">
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+<script>
+(function () {
+    try {
+        var m = localStorage.getItem('theme');
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.documentElement.dataset.theme = m === 'light' || (m !== 'dark' && light) ? 'light' : 'dark';
+    } catch (e) { /* без localStorage остаётся тёмная */ }
+})();
+</script>
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header class="header">
-        <div class="container">
+        <div class="container header-inner">
             <a href="index.html" class="back-link">← Назад к списку</a>
+            <button id="theme-toggle" class="theme-toggle" type="button"></button>
         </div>
     </header>
 
@@ -29,6 +39,7 @@
         </div>
     </footer>
 
+    <script type="module" src="js/theme.js"></script>
     <script type="module" src="js/utils-shared.js"></script>
     <script type="module" src="vpn-detail.js"></script>
 </body>

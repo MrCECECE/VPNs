@@ -11,8 +11,6 @@ export let lastUpdated = null;
 // Текущие значения фильтров
 export let currentFilters = {
     rating: 0,
-    download: 0,
-    upload: 0,
     search: ''
 };
 
@@ -21,7 +19,8 @@ export let currentFilters = {
  */
 export async function loadVpnData() {
     try {
-        const response = await fetch('vpn-data.json');
+        // no-cache: всегда сверять с сервером, чтобы данные не застаивались
+        const response = await fetch('vpn-data.json', { cache: 'no-cache' });
         if (!response.ok) {
             throw new Error('Ошибка загрузки данных');
         }

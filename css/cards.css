@@ -1,279 +1,195 @@
 /* ================================
-   VPN Cards Styles
+   VPN List Styles (компактный список)
    ================================ */
 
-/* Cards Container */
+/* List Container */
 .cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-    margin: 20px 0 40px;
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 500px;
-}
-
-/* VPN Card */
-.vpn-card-link {
-    display: block;
-    height: 100%;
-    animation: fadeInUp 0.4s ease forwards;
-    opacity: 0;
-    will-change: transform, opacity;
-}
-
-.vpn-card {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    padding: 20px;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    min-height: 320px;
+    gap: 8px;
+    margin: 20px 0 40px;
+    padding: 0;
 }
 
-.vpn-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border-color: var(--accent-color);
+/* VPN Row */
+.vpn-row {
+    display: flex;
+    align-items: stretch;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color var(--transition-fast),
+                background var(--transition-fast);
+    animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(12px) scale(0.995);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
-/* Enhanced card entrance animation */
-.vpn-card-link {
-    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+/* Уважаем настройку "уменьшить движение" */
+@media (prefers-reduced-motion: reduce) {
+    .vpn-row {
+        animation: none;
+    }
 }
 
-.vpn-card-link:nth-child(1) { animation-delay: 0.1s; }
-.vpn-card-link:nth-child(2) { animation-delay: 0.2s; }
-.vpn-card-link:nth-child(3) { animation-delay: 0.3s; }
-.vpn-card-link:nth-child(4) { animation-delay: 0.4s; }
-.vpn-card-link:nth-child(5) { animation-delay: 0.5s; }
-.vpn-card-link:nth-child(6) { animation-delay: 0.6s; }
-.vpn-card-link:nth-child(7) { animation-delay: 0.7s; }
-.vpn-card-link:nth-child(8) { animation-delay: 0.8s; }
+.vpn-row:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-color);
+}
 
-/* Card Header */
-.card-header {
+/* Main clickable area */
+.vpn-row-main {
+    flex: 1;
+    min-width: 0;
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 14px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .vpn-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     object-fit: cover;
     background: var(--bg-tertiary);
+    flex-shrink: 0;
 }
 
-.vpn-info {
+.vpn-row-info {
     flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
 
 .vpn-name {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 8px;
     color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Download Button */
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    background: var(--btn-primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: background var(--transition-fast);
-}
-
-.download-btn:hover {
-    background: var(--btn-hover);
-}
-
-/* Rating Styles */
-.vpn-rating {
+.vpn-meta {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-width: 0;
 }
 
-.vpn-rating-detail {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 8px;
-}
-
-.rating-stars {
-    font-size: 1rem;
+.cards-container .rating-stars {
+    font-size: 0.9rem;
     letter-spacing: 1px;
+    flex-shrink: 0;
 }
 
-.rating-stars.excellent,
-.rating-stars.good {
+.cards-container .rating-stars.excellent,
+.cards-container .rating-stars.good {
     color: #facc15;
 }
 
-.rating-stars.average {
+.cards-container .rating-stars.average {
     color: #d29922;
 }
 
-.rating-stars.low {
+.cards-container .rating-stars.low {
     color: #f87171;
 }
 
-.rating-value {
+.cards-container .rating-value {
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: var(--text-primary);
+    flex-shrink: 0;
 }
 
 .review-count {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     color: var(--text-secondary);
 }
 
-/* Card Speeds */
-.card-speeds {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.speed-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.speed-label {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.speed-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.speed-badge.high {
-    background: var(--speed-high-bg);
-    color: var(--speed-high);
-    border: 1px solid var(--speed-high);
-}
-
-.speed-badge.medium {
-    background: var(--speed-medium-bg);
-    color: var(--speed-medium);
-    border: 1px solid var(--speed-medium);
-}
-
-.speed-badge.low {
-    background: var(--speed-low-bg);
-    color: var(--speed-low);
-    border: 1px solid var(--speed-low);
-}
-
-/* Speed Indicators */
-.speed-indicators {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex: 1;
-}
-
-.indicator {
-    display: grid;
-    grid-template-columns: 80px 1fr 80px;
-    align-items: center;
-    gap: 10px;
-}
-
-.indicator-label {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-}
-
-.indicator-bar {
-    height: 8px;
-    background: var(--bg-tertiary);
-    border-radius: 4px;
+/* В списке отзывы всегда в одну строку с рейтингом:
+   если не влезают - обрезаются многоточием */
+.cards-container .review-count {
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
-.indicator-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease;
-}
-
-.indicator-fill.high {
-    background: linear-gradient(90deg, var(--speed-high) 0%, #4ade80 100%);
-}
-
-.indicator-fill.medium {
-    background: linear-gradient(90deg, var(--speed-medium) 0%, #facc15 100%);
-}
-
-.indicator-fill.low {
-    background: linear-gradient(90deg, var(--speed-low) 0%, #f87171 100%);
-}
-
-.indicator-value {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-align: right;
-}
-
-/* Card Footer */
-.card-footer {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid var(--border-color);
-}
-
-.view-details {
+.row-arrow {
     color: var(--accent-color);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color var(--transition-fast);
+    font-size: 1rem;
+    margin-left: auto;
+    padding-left: 10px;
+    transition: transform var(--transition-fast);
 }
 
-.vpn-card:hover .view-details {
+.vpn-row:hover .row-arrow {
+    transform: translateX(4px);
     color: var(--accent-hover);
+}
+
+/* Google Play direct link */
+.vpn-row-gplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    flex-shrink: 0;
+    border-left: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: background var(--transition-fast),
+                color var(--transition-fast);
+}
+
+.vpn-row-gplay:hover {
+    background: rgba(35, 134, 54, 0.2);
+    color: #3fb950;
+}
+
+/* Rating Styles (детальная страница) — в detail.css */
+
+/* Половинка звезды: снизу ☆ (контур), сверху ★, обрезанная до половины.
+   Слои из одного шрифта - совпадают пиксель в пиксель на любых устройствах. */
+.half-star {
+    position: relative;
+    display: inline-block;
+}
+
+.half-star::before {
+    content: '☆';
+}
+
+.half-star::after {
+    content: '★';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    overflow: hidden;
 }
 
 /* No Results Message */
 .no-results {
-    grid-column: 1 / -1;
     text-align: center;
     padding: 60px 20px;
     color: var(--text-secondary);

@@ -68,36 +68,3 @@ async function init() {
 
 // Запустить при загрузке DOM
 document.addEventListener('DOMContentLoaded', init);
-
-/**
- * Toggle Filter - Сворачивание/разворачивание фильтров
- */
-function initToggleFilter() {
-    const toggleBtn = document.getElementById('toggle-filter-btn');
-    const filterContent = document.getElementById('filter-content');
-    
-    if (!toggleBtn || !filterContent) return;
-    
-    // Проверить сохранённое состояние
-    const isCollapsed = localStorage.getItem('filterCollapsed') === 'true';
-    
-    // Применить сохранённое состояние
-    if (isCollapsed) {
-        filterContent.classList.add('hidden');
-        toggleBtn.classList.add('collapsed');
-    }
-    
-    // Обработчик клика
-    toggleBtn.addEventListener('click', () => {
-        const isHidden = filterContent.classList.toggle('hidden');
-        toggleBtn.classList.toggle('collapsed');
-        
-        // Сохранить состояние
-        localStorage.setItem('filterCollapsed', isHidden);
-        
-        console.log(`🎛️ Filter: ${isHidden ? 'collapsed' : 'expanded'}`);
-    });
-}
-
-// Инициализировать переключение фильтра
-initToggleFilter();

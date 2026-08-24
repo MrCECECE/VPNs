@@ -7,13 +7,24 @@
     <meta name="description" content="Сравнение скорости VPN сервисов: скачивание и загрузка данных">
     <meta property="og:title" content="VPNS - Сравнение VPN сервисов">
     <meta property="og:type" content="website">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/main.css">
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+<script>
+// Ранняя установка темы, чтобы не было вспышки неправильной темы
+(function () {
+    try {
+        var m = localStorage.getItem('theme');
+        var light = window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.documentElement.dataset.theme = m === 'light' || (m !== 'dark' && light) ? 'light' : 'dark';
+    } catch (e) { /* без localStorage остаётся тёмная */ }
+})();
+</script>
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <header class="header">
-        <div class="container">
+        <div class="container header-inner">
             <h1>🚀 VPNS</h1>
+            <button id="theme-toggle" class="theme-toggle" type="button"></button>
         </div>
     </header>
 
@@ -30,46 +41,13 @@
                 </div>
 
                 <div class="filter-container">
-                    <div class="filter-header">
-                        <span class="filter-title">🎛️ Фильтры</span>
-                        <div class="filter-actions">
-                            <button id="toggle-filter-btn" class="toggle-filter-btn" title="Скрыть/показать фильтры">
-                                <span class="toggle-icon">▼</span>
-                            </button>
-                            <button id="reset-filters-btn" class="reset-filters-btn">Сбросить</button>
-                        </div>
-                    </div>
-                    
                     <div id="filter-content" class="filter-content">
-                    
-                    <!-- Rating Filter -->
-                    <div class="range-filter rating-filter">
-                        <div class="range-label">
-                            <span class="range-name">
-                                <span class="rating-stars-filter">⭐</span> Рейтинг
-                            </span>
-                            <span class="range-value" id="rating-value">0+</span>
-                        </div>
+                        <span class="range-name">
+                            <span class="rating-stars-filter">⭐</span> Рейтинг от
+                        </span>
+                        <input type="number" id="rating-value" class="range-value" min="0" max="5" step="0.1" inputmode="decimal" value="0">
                         <input type="range" id="rating-filter" class="range-slider" min="0" max="5" step="0.1" value="0">
-                    </div>
-                    
-                    <!-- Download Filter -->
-                    <div class="range-filter">
-                        <div class="range-label">
-                            <span class="range-name">↓ Скачивание (Mbps)</span>
-                            <span class="range-value" id="download-value">0+</span>
-                        </div>
-                        <input type="range" id="download-filter" class="range-slider" min="0" max="100" step="1" value="0">
-                    </div>
-                    
-                    <!-- Upload Filter -->
-                    <div class="range-filter">
-                        <div class="range-label">
-                            <span class="range-name">↑ Загрузка (Mbps)</span>
-                            <span class="range-value" id="upload-value">0+</span>
-                        </div>
-                        <input type="range" id="upload-filter" class="range-slider" min="0" max="100" step="1" value="0">
-                    </div>
+                        <button id="reset-filters-btn" class="reset-filters-btn">Сбросить</button>
                     </div>
                 </div>
             </div>
@@ -77,21 +55,15 @@
             <div class="sort-container">
                 <span class="sort-label">Сортировать по:</span>
                 <div class="sort-buttons">
-                    <button data-sort="download" class="sort-btn sortable">
-                        <span class="th-content">
-                            Скачивание
-                            <span class="sort-icon">↕</span>
-                        </span>
-                    </button>
                     <button data-sort="rating" class="sort-btn sortable">
                         <span class="th-content">
                             Рейтинг
                             <span class="sort-icon">↕</span>
                         </span>
                     </button>
-                    <button data-sort="upload" class="sort-btn sortable">
+                    <button data-sort="name" class="sort-btn sortable">
                         <span class="th-content">
-                            Загрузка
+                            Название
                             <span class="sort-icon">↕</span>
                         </span>
                     </button>
@@ -107,24 +79,6 @@
                 <!-- Карточки загрузятся через JavaScript -->
             </div>
 
-            <div class="legend">
-                <h3>📊 Легенда скорости</h3>
-                <div class="legend-items">
-                    <div class="legend-item">
-                        <span class="speed-dot high"></span>
-                        <span>Быстро (>10 Mbps)</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="speed-dot medium"></span>
-                        <span>Средне (5-10 Mbps)</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="speed-dot low"></span>
-                        <span>Медленно (<5 Mbps)</span>
-                    </div>
-                </div>
-            </div>
-
             <footer class="footer">
                 <div class="footer-content">
                     <span id="last-updated">📅 Обновлено: Февраль 2025</span>
@@ -135,6 +89,7 @@
         </div>
     </main>
 
+    <script type="module" src="js/theme.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>
